@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neurotypical Test | PISNT</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+      <h1>The neurotypical test</h1>
+      <p>The neurotypical test is a highly evidence based test formulated by a top teir team of scientists to test if you are neurotypical or not. The test propts you with different situations, and you have to click the answer that best represents how you would react in these situations. Then, a very complex mathematical formula decides if you are or aren't neurotypical. This is a revised version of the original ISNT test.</p>
+      <label for="q1">1) You attend a party, you:</label>
+      <select name="q1" id="q1">  
+            <option value=-1></option>
+            <option value=1>walk up to the host, look them in the eye, and give them a warm hug for inviting you.</option>
+            <option value=1>tell your friend it's fun, but you with there where a bigger crowd.</option>
+            <option value=1>engage in small talk and mingle with partygoers</option>
+            <option value=0>Sit in a quiet, secluded corner and watch the fish tank the whole time</option>
+      </select>
+      <br>
+      <br>
+      <label for="q2">2) You mother asks what you think of her new dress, you:</label>
+      <select name="q2" id="q2">
+            <option value=-1></option>     
+            <option value=1>compliment her and make small talk to continue a converstion</option>
+            <option value=0>stare at her blankly because having opinions on dresses makes no sense to you</option>
+            <option value=1>you dont like it, but you smile and say it looks nice anyway</option>
+            <option value=0>be honest and tell her it looks like shit</option>
+      </select>
+      <br>
+      <br>
+      <label for="q3">3) Someone mentions your favorite TV show, Gravity Falls, you:</label>
+      <select name="q3" id="q3"> 
+            <option value=-1></option>
+            <option value=0>Launch into a 10 minute monolauge about the all powerful Axolotol and evidence that suggests they are the reason that Bill Cipher is still alive.</option>
+            <option value=1>Tell them you like Gravity Falls and ask their favorite TV show</option>
+            <option value=1>Ask people to join you to watch Gravity Falls at your house</option>
+            <option value=1>Mention you like it and contine the conversation as normal</option>
+      </select>
+      <br>
+      <br>
+      <label for="q4">4) You are reading alone on a public bench, but a stranger comes and sits nearby you, you:</label>
+      <select name="q4" id="q4"> 
+            <option value=-1></option>
+            <option value=1>Make small talk with them</option>
+            <option value=1>Continue reading as normal</option>
+            <option value=0>Start getting really stressed at the unknown human presence near you and move to a different bench</option>
+            <option value=0>Freeze. You are now having a meltdown.</option>
+      </select>
+      <br>
+      <br>
+      <label for="q5">5) Your techer is giving a lecture, you:</label>
+      <select name="q5" id="q5">   
+            <option value=-1></option>
+            <option value=1>Listen and take notes.</option>
+            <option value=0>Don't know she was giving a lecture in the fist place, you are distracted by a bug crawling across your desk.</option>
+            <option value=1>Ask when the next assignment is due.</option>
+            <option value=1>Ask a question about why you subtract the exponents when you divide.</option>
+      </select>
+      <br>
+      <br>
+      <label for="q5">6) You are eating dinner with your family and have somthing you would like to add to the conversation, you:</label>
+      <select name="q6" id="q6">   
+            <option value=-1></option>
+            <option value=1>Wait for a pause to say what you want</option>
+            <option value=1>Decide what you want to say isnt important and just dont say it</option>
+            <option value=0>Think you found a pause to add what you want but you just inturrupted someone on accident</option>
+            <option value=0>Wait for a pause but never find one so the conversation moves topics and now you are sad because a) you never got to say what you wanted and b) you dont understand the concept of a conversation swiching topics so quickly.</option>
+      </select>
+      <br>
+      <br>
+      <button id="btn1">calculate</button> 
+      <br>
+      <br>
+      <p id="score"></p>
+      <br>
+      <br>
+      <a href="index.html">Go back to the homepage</a>
+</body>
+</html>
+
+<style>
+ 
+</style>
+
+<script>
+      $(document).ready(function(){
+            $("#btn1").click(function(){
+                  var values = [
+                  Number($("#q1").val()),
+                  Number($("#q2").val()), 
+                  Number($("#q3").val()),
+                  Number($("#q4").val()),
+                  Number($("#q5").val()), 
+                  Number($("#q6").val())
+                  ];
+                  
+                  var totalValue = 0;
+                  for (var i = 0; i < values.length; i++) {
+                        if (values[i] == -1) {
+                              alert("please answer all of the questions");
+                              return 0;
+                        }
+                        else if (values[i] > -1) {
+                              totalValue += values[i];
+                        }
+                  }
+                  
+                  alert(totalValue);
+                  if (totalValue >= 4) {
+                        $("#score").css("color", "red");
+                        $("#score").html("You are neurotypical. Please consider killing yourself to rid the world of your worthless existence.");
+                  }
+                  else if (totalValue < 4) {
+                        $("#score").css("color", "green")
+                        $("#score").html("You are not neurotypical. Congrats!");
+                  }
+                  
+            });
+      })
+</script>
